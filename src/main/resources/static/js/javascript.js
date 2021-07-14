@@ -135,7 +135,7 @@ function addEquip() {
   var description = document.getElementById('equipmentDesc').value;
 
   var name = document.getElementById('equipmentName').value;
-
+var info;
 
   fetch("https://java-issue-app.herokuapp.com/equips/read")
     .then(response => response.json())
@@ -148,7 +148,7 @@ function addEquip() {
 
 
 
-      var info = {
+      info = {
         description, name, id: equipsId
       }
 
@@ -168,6 +168,10 @@ function addEquip() {
 
           window.alert(response[0]);
 
+      equipmentSelect = document.getElementById('equipmentSelect');
+     
+
+        equipmentSelect.options[equipmentSelect.options.length] = new Option(`${info.name}`, `${info.id}`);
           var rows = "";
 
 
@@ -235,10 +239,25 @@ function addIssue() {
 
 
 
-}
-function cancelIssuePost() {
+}function cancelIssuePost() {
 
   console.log("reset form")
+  
+  var description = document.getElementById('issueDesc').value="";
+
+  var location = document.getElementById('issueLocation').value="";
+  var selects = document.getElementById('equipmentSelect').value="0";
+
+
+}
+function cancelEquipPost() {
+
+  console.log("reset form")
+  
+ 
+  var description = document.getElementById('equipmentDesc').value="";
+
+  var name = document.getElementById('equipmentName').value="";
 
 }
 function getEquips() {
